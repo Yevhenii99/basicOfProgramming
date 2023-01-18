@@ -93,7 +93,7 @@
      }
      if(product == false) 
      {
-         printf("No product on this letter, try again please!");
+         printf("No product on this letter, try again please!");//msg no product
      }
  }
 
