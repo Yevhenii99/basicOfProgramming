@@ -26,7 +26,7 @@ int main(void) {
 	getIncreaseNums_3(a, b, c);
 	int* pAge = new int;
 	std::cout << "Value of new var in heap before i initialized it: " << *pAge << std::endl;
-	*pAge = 23;
+	*pAge = 22;
 	std::cout << "Value of new var in heap after i init it: " << *pAge << std::endl;
 
 	//std::cout << "Result of func execution: " << getVolumeOfCubeCoef_X(width, length, height, x) << std::endl;//Передаю параметри за значенням
