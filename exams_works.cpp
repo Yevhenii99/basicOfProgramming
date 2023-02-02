@@ -9,6 +9,8 @@ int  getVolumeOfCubeCoef_X(int &w, int &l, int &h, int &x);
 int getMaxNumber(int a, int b, int c);
 int getMaxNumber(int a, int b);
 
+void getHeapMemory();
+
 int main(void) {
 	int a = 10, b = 5, c = 33;
 
@@ -24,15 +26,11 @@ int main(void) {
 	getIncreaseNums_1(a, b, c);
 	getIncreaseNums_2(&a, &b, &c);
 	getIncreaseNums_3(a, b, c);
-	int* pAge = new int;
-	std::cout << "Value of new var in heap before i initialized it: " << *pAge << std::endl;
-	*pAge = 10;
-	std::cout << "Value of new var in heap after i init it: " << *pAge << std::endl;
 
-	//std::cout << "Result of func execution: " << getVolumeOfCubeCoef_X(width, length, height, x) << std::endl;//Передаю параметри за значенням
-	//std::cout << "Result of func execution: " << getVolumeOfCubeCoef_X(&width, &length, &height, &x) << std::endl;//Передаю адресу змінних в
-	//параметри функції
-	std::cout << "Result of func execution: " << getVolumeOfCubeCoef_X(width, length, height, x) << std::endl;//Передаю змінні за посиланням
+	getHeapMemory();
+	//std::cout << "Result of func execution: " << getVolumeOfCubeCoef_X(width, length, height, x) << std::endl;//Pass the values into func
+	//std::cout << "Result of func execution: " << getVolumeOfCubeCoef_X(&width, &length, &height, &x) << std::endl;//Pass the address of vars into func
+	std::cout << "Result of func execution: " << getVolumeOfCubeCoef_X(width, length, height, x) << std::endl;//Pass by reference
 
 	//------Exerc-2
 	std::cout << "result " << getMaxNumber(a, b, c);
@@ -65,14 +63,12 @@ void getIncreaseNums_3(int &a, int &b, int &c) {
 
 //------Exercise-2
 
-int getVolumeOfCubeCoef_X(int &w, int &l, int &h, int &x) { //функці може приймати параметри за поінтером, за посиланням та за значнням(в данному випадку за посиланням)
+int getVolumeOfCubeCoef_X(int &w, int &l, int &h, int &x) {
 	int volume = ((w * l) * h) * x;
 	return volume;
 }
-//Друга частина завадання 2
 // -------------
-//Визначте функцію, яка знаходить максимальне значення своїх параметрів(перша функція – два цілочисельних параметри, 
-//друга – три цілочисельних параметри).
+//Find max value in 2 funcs (first has 3 parameters and second has 2 paramtrs)
 
 int getMaxNumber(int a, int b, int c) {
 	
@@ -81,4 +77,11 @@ int getMaxNumber(int a, int b, int c) {
 int getMaxNumber(int a, int b) {
 
 	return (std::max(a, b));
+}
+
+void getHeapMemory() {
+	int* pAge = new int;
+	std::cout << "Value of var pAge before init: " << *pAge << std::endl;
+	*pAge = 22;
+	std::cout << "Value of var pAge after init: " << *pAge << std::endl;
 }
