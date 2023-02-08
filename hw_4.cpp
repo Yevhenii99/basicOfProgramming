@@ -2,6 +2,8 @@
 
 //Варіант 6. Дан двовимірний масив чисел.Підрахувати добуток однієї й другої діагоналі масиву чисел.
 
+//Option 6. Given a two - dimensional array of numbers.Calculate the product of one and the second diagonal of the array of numbers.
+
 int getCalcDiagonalMult(int m[][3], int row, int col);
 void getSumOfMatrixElems();
 void getMultOfPositiveElems(int* array, const int SIZE);
@@ -52,6 +54,7 @@ int getCalcDiagonalMult(int m[][3], int row, int col) {
 	return 0;
 }
 //Варіант 15. Задана двовимірна матриця дійсних чисел А[1..N, 1..N].Знайдіть суму заштрихованих елементів 
+//Option 15. Given a two - dimensional matrix of real numbers A[1..N, 1..N].Find the sum of the shaded elements
 void getSumOfMatrixElems() {
 	int matrix[][5] = {
 		{1, 2, 3, 4, 5},
@@ -82,6 +85,7 @@ void getSumOfMatrixElems() {
 }
 
 //Завдання 2. У масиві з 11 елементів знайти добуток додатних елементів; визначити max за модулем елемент.
+//Task 2. Find the product of positive elements in an array of 11 elements; determine the max modulo the element.
 
 
 void getMultOfPositiveElems(int *array, const int SIZE) {
@@ -107,6 +111,10 @@ void getMultOfPositiveElems(int *array, const int SIZE) {
 //та підрахувати суму двох матриць записавши результат у третю матрицю, 
 //тобто результатам повинна бути матриця, а не число.Вивести отриманий результат на друк.
 
+//TASK 3 Declare three two - dimensional arrays(matrices)
+//and calculate the sum of two matrices by writing the result in the third matrix,
+//that is, the results should be a matrix, not a number. Print the obtained result.
+
 void getFillTrirdMatrix() {
 	int** pMatrix = new int* [3];
 	for (int i = 0; i < 3; i++)
@@ -131,37 +139,13 @@ void getFillTrirdMatrix() {
 	}
 	std::cout << "Sum res: " << sum << std::endl;
 
+	int** pMatrix2 = new int* [3];
 
 
-	/*for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 3; j++)
-		{
-			pMatrix[i][j] = 2;
-		}
-	}
-	std::cout << pMatrix[0][2] << std::endl;*/
 }
 
 
 
 
 
-//void func(int* m, int r1, int r2);
-//int main() {
-//	int arr[][3] = {
-//		{1, 2, 3},
-//		{4, 5, 6}
-//	};
-//	func(&arr[0][0], 2, 3);
-//	return 0;
-//}
 
-//void func(int *m, int r1, int r2) {
-//	std::cout << "f\n";
-//	for (int i = 0; i < r1; i++)
-//	{
-//		for (int j = 0; j < r2; j++) {
-//			std::cout << *(m + i * r2 + j);
-//		}
-//	}
-//}
