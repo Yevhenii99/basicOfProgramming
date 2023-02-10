@@ -7,7 +7,7 @@
 int getCalcDiagonalMult(int m[][3], int row, int col);
 void getSumOfMatrixElems();
 void getMultOfPositiveElems(int* array, const int SIZE);
-void getFillTrirdMatrix();
+int getFillThirdMatrixUsingTwo();
 
 int main() {
 	int arr[][3] = {
@@ -17,12 +17,13 @@ int main() {
 	};
 	
 	const int SIZE = 11;
+	//Array for 2 task
 	int array2[] = { 3, 2, -12, 2, 4, -1, 1, 2, 3, -4, 1 };
 
-	//getCalcDiagonalMult(arr, 3, 3);
-	//getSumOfMatrixElems();
-	//getMultOfPositiveElems(array2, SIZE);
-	getFillTrirdMatrix();
+	getCalcDiagonalMult(arr, 3, 3);
+	/*getSumOfMatrixElems();
+	getMultOfPositiveElems(array2, SIZE);
+	getFillThirdMatrixUsingTwo();*/
 
 	return 0;
 }
@@ -64,24 +65,24 @@ void getSumOfMatrixElems() {
 		{22, 19, 20, 21, 22}
 	};
 	const int ROW = 5, COL = 5;
+	int k;
 	int sum = 0;
 	for (int i = 0; i < ROW; i++)
 	{
-		for (int j = 0; j < COL; j++) {
-			sum += matrix[i][j];
-			sum += matrix[i + 1][j];
-			sum += matrix[i + 1][j + 1];
-			sum += matrix[i + 2][j];
-			sum += matrix[i + 2][j + 1];
-			sum += matrix[i + 2][j + 2];
-			sum += matrix[i + 3][j];
-			sum += matrix[i + 3][j + 1];
-			sum += matrix[i + 4][j];
-			break;
+		if (i < ((ROW / 2) + 1)) {
+			k = i;
+			for (int j = 0; j <= i; j++) {
+				sum += matrix[i][j];
+			}
 		}
-		break;
+		else {
+			for (int j = 0; j <= k; j++) {
+				sum += matrix[i][j];
+				k--;
+			}
+		}
 	}
-	std::cout << "result is: " << sum << std::endl;
+		std::cout << "result is: " << sum << std::endl;
 }
 
 //Завдання 2. У масиві з 11 елементів знайти добуток додатних елементів; визначити max за модулем елемент.
@@ -115,37 +116,70 @@ void getMultOfPositiveElems(int *array, const int SIZE) {
 //and calculate the sum of two matrices by writing the result in the third matrix,
 //that is, the results should be a matrix, not a number. Print the obtained result.
 
-void getFillTrirdMatrix() {
-	int** pMatrix = new int* [3];
-	for (int i = 0; i < 3; i++)
+
+int getFillThirdMatrixUsingTwo() {
+	const int ROW = 3, COL = 3;
+	int** pMatrix = new int* [ROW];
+	for (int i = 0; i < ROW; i++)
 	{
-		pMatrix[i] = new int[3];
+		pMatrix[i] = new int[COL];
 	}
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < ROW; i++)
 	{
-		for (int j = 0; j < 3; j++) {
-			pMatrix[i][j] = rand() % 10;
+		for (int j = 0; j < COL; j++) {
+			pMatrix[i][j] = rand() % 15;
 		}
 	}
-	int sum = 0;
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < ROW; i++)
 	{
-		for (int k = 0; k < 3; k++) {
-			std::cout << pMatrix[i][k] << "    ";
-
-			sum += pMatrix[i][k];
+		for (int k = 0; k < COL; k++) {
+			std::cout << pMatrix[i][k] << "  ";
 		}
 		std::cout << "\n";
 	}
-	std::cout << "Sum res: " << sum << std::endl;
+	std::cout << "\n";
 
-	int** pMatrix2 = new int* [3];
+	int** pMatrix2 = new int* [ROW];
+	for (int i = 0; i < ROW; i++)
+	{
+		pMatrix2[i] = new int[COL];
+	}
+	for (int i = 0; i < ROW; i++)
+	{
+		for (int j = 0; j < COL; j++) {
+			pMatrix2[i][j] = rand() % 10;
+		}
+	}
+	for (int i = 0; i < ROW; i++)
+	{
+		for (int k = 0; k < COL; k++) {
+			std::cout << pMatrix2[i][k] << "  ";
+		}
+		std::cout << "\n";
+	}
 
+	int** pMatrix3 = new int* [ROW];
+	for (int i = 0; i < ROW; i++)
+	{
+		pMatrix3[i] = new int[COL];
+	};
+	for (int i = 0; i < ROW; i++) {
+		for (int j = 0; j < COL; j++)
+		{
+			pMatrix3[i][j] = pMatrix[i][j] + pMatrix2[i][j];
+		}
+	}
+	// Displaying the resultant sum matrix.
+	std::cout << std::endl << "Sum of two matrix is: " << std::endl;
+	for (int i = 0; i < ROW; i++)
+		for (int j = 0; j < COL; j++)
+		{
+			std::cout << pMatrix3[i][j] << "  ";
+			if (j == COL - 1)
+				std::cout << std::endl;
+		}
 
+	return 0;
 }
-
-
-
-
 
 
